@@ -13,7 +13,6 @@ public class SimHashMd5Algorithm {
 
     private static int hashbits = 64;
 
-    //参考链接： https://zhuanlan.zhihu.com/p/81026564
     public static String simHash(List<SimHashWord> list) {
         int[] v = new int[hashbits];
 

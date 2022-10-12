@@ -25,6 +25,15 @@ import static com.example.myutil.simhash.SimHashMd5Algorithm.simHash;
 
 //根据上述获取到的相似数据，通过LR逻辑回归模型，获取最相似的id
 
+//参考链接：
+//1、https://zhuanlan.zhihu.com/p/81026564
+//2、https://blog.csdn.net/fkyyly/article/details/84503313
+//3、https://blog.csdn.net/houxq123/article/details/79793184
+
+//simhash如何处理短文本？换一种思路，simhash可以作为局部敏感哈希第一次计算缩小整个比较的范围，等到我们只有比较700多次比较时，
+// 就算使用我们之前精准度高计算很慢的编辑距离也可以搞定。当然如果觉得慢了，也可以使用余弦夹角等效率稍微高点的相似度算法。
+
+//余弦相似度算法适合于短文本，而SimHash算法适合于长文本，并且能应用于大数据环境中。
 public class SimHashSegService {
 
 
@@ -38,6 +47,7 @@ public class SimHashSegService {
         if (segNumber!=4 && segNumber!=8){
             throw new InvalidParameterException("simhash segment must is 3 or 7");
         }
+        //借助map的思想，分段存储，便于快速搜索
         int segLength = 64/segNumber;
         for (int i = 0; i < segNumber; i++) {
             String seg = simHash.substring(i * segLength, (i + 1) * segLength) + ":" + i;
