@@ -1,0 +1,7 @@
+minio:
+  endpoint: http://10.251.159.166:9000
+  bucketName: test #?????
+  accessKey: 0xANMJ2G1S7Mj5ZY #???key
+  secretKey: N5LcIiTVwomJvqFvqjm7af2bAicvqJxm #?????
+
+
